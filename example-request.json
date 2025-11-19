@@ -1,0 +1,1212 @@
+{
+  "input": {
+    "workflow": {
+      "131": {
+        "inputs": {
+          "MODEL": [
+            "135",
+            0
+          ],
+          "CLIP": [
+            "133",
+            0
+          ],
+          "VAE": [
+            "134",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere3",
+        "_meta": {
+          "title": "Anything Everywhere3"
+        }
+      },
+      "132": {
+        "inputs": {
+          "filename": "flux1-dev.sft"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      },
+      "133": {
+        "inputs": {
+          "filename": "t5xxl_fp16.safetensors"
+        },
+        "class_type": "DualCLIPLoader",
+        "_meta": {
+          "title": "DualCLIPLoader"
+        }
+      },
+      "134": {
+        "inputs": {
+          "filename": "ae.sft"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "135": {
+        "inputs": {
+          "filename": "Flux\\flux_realism_lora.safetensors",
+          "model": [
+            "132",
+            0
+          ]
+        },
+        "class_type": "LoraLoaderModelOnly",
+        "_meta": {
+          "title": "LoraLoaderModelOnly"
+        }
+      },
+      "136": {
+        "inputs": {
+          "text": [
+            "168",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "137": {
+        "inputs": {
+          "value": 4
+        },
+        "class_type": "FluxGuidance",
+        "_meta": {
+          "title": "FluxGuidance"
+        }
+      },
+      "142": {
+        "inputs": {
+          "text": "euler"
+        },
+        "class_type": "KSamplerSelect",
+        "_meta": {
+          "title": "KSamplerSelect"
+        }
+      },
+      "143": {
+        "inputs": {
+          "text": "simple",
+          "model": [
+            "145",
+            0
+          ]
+        },
+        "class_type": "BasicScheduler",
+        "_meta": {
+          "title": "BasicScheduler"
+        }
+      },
+      "144": {
+        "inputs": {
+          "conditioning": [
+            "137",
+            0
+          ]
+        },
+        "class_type": "BasicGuider",
+        "_meta": {
+          "title": "BasicGuider"
+        }
+      },
+      "145": {
+        "inputs": {
+          "value": 2.5100000000000002
+        },
+        "class_type": "ModelSamplingFlux",
+        "_meta": {
+          "title": "ModelSamplingFlux"
+        }
+      },
+      "146": {
+        "inputs": {
+          "SIGMAS": [
+            "143",
+            0
+          ],
+          "SAMPLER": [
+            "142",
+            0
+          ],
+          "GUIDER": [
+            "144",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere3",
+        "_meta": {
+          "title": "To Custom Sampler"
+        }
+      },
+      "147": {
+        "inputs": {
+          "text": "lanczos"
+        },
+        "class_type": "ImageScaleToTotalPixels",
+        "_meta": {
+          "title": "ImageScaleToTotalPixels"
+        }
+      },
+      "149": {
+        "inputs": {
+          "pixels": [
+            "147",
+            0
+          ]
+        },
+        "class_type": "VAEEncode",
+        "_meta": {
+          "title": "VAEEncode"
+        }
+      },
+      "154": {
+        "inputs": {
+          "image": "example.png"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "1. img to img"
+        }
+      },
+      "156": {
+        "inputs": {
+          "value": 2,
+          "input1": [
+            "149",
+            0
+          ],
+          "input2": [
+            "316",
+            0
+          ]
+        },
+        "class_type": "ImpactSwitch",
+        "_meta": {
+          "title": "image Source Switch"
+        }
+      },
+      "157": {
+        "inputs": {
+          "value": 512,
+          "width": [
+            "183",
+            0
+          ],
+          "height": [
+            "183",
+            1
+          ]
+        },
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+          "title": "EmptyLatentImage"
+        }
+      },
+      "158": {
+        "inputs": {
+          "text": "",
+          "LATENT": [
+            "156",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "To Latent Image"
+        }
+      },
+      "159": {
+        "inputs": {},
+        "class_type": "SamplerCustomAdvanced",
+        "_meta": {
+          "title": "SamplerCustomAdvanced"
+        }
+      },
+      "160": {
+        "inputs": {
+          "value": 806672113808625,
+          "noise_seed": [
+            "161",
+            0
+          ]
+        },
+        "class_type": "RandomNoise //Inspire",
+        "_meta": {
+          "title": "RandomNoise //Inspire"
+        }
+      },
+      "161": {
+        "inputs": {
+          "value": 461057377837969
+        },
+        "class_type": "Seed (rgthree)",
+        "_meta": {
+          "title": "Seed (rgthree)"
+        }
+      },
+      "162": {
+        "inputs": {
+          "text": "",
+          "NOISE": [
+            "160",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "To Custom Sampler"
+        }
+      },
+      "163": {
+        "inputs": {
+          "text": "FluxGuidance",
+          "CONDITIONING": [
+            "254",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "To FluxGuidance"
+        }
+      },
+      "164": {
+        "inputs": {
+          "text": "",
+          "IMAGE": [
+            "154",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "Anything Everywhere?"
+        }
+      },
+      "168": {
+        "inputs": {
+          "filename": "a photo of a cute women dressed in cosplay attire, cosplaying power from Chainsaw man. She have long blonde hair with long bangs and wearing red contact lens to highlight her eyes and face. She is wearing a white shirt and black jeans and black tie with a blue jacket draping on body. She has red horn on her head. She is sitting on the ground with a frustrating face, showing a card that has the word \"FLUX\" on it.\n\nThe background is a messy room fully with all kind of daily items, there is a window on the right side where natural light shining in filling up the room with warm natural lights. On the back wall there are three BIG posters with each one writing \"LoRa\", \" ControlNet\" and \" Negative Prompt\" on it respectively.\n\nThe image is highly detailed with natural textures and intricate patterns, showcasing realistic lighting and deep shadows to give the scene a sense of depth. The focus should be clearly defined, making every object appear sharply focused with pin-sharp details."
+        },
+        "class_type": "String Literal",
+        "_meta": {
+          "title": "Prompt"
+        }
+      },
+      "183": {
+        "inputs": {
+          "value": 1.3
+        },
+        "class_type": "PixelResolutionCalculator",
+        "_meta": {
+          "title": "PixelResolutionCalculator"
+        }
+      },
+      "184": {
+        "inputs": {},
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAE Decode 1"
+        }
+      },
+      "185": {
+        "inputs": {
+          "images": [
+            "288",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "230": {
+        "inputs": {
+          "value": 8,
+          "samples": [
+            "156",
+            0
+          ]
+        },
+        "class_type": "LatentSizeToPixelSize",
+        "_meta": {
+          "title": "LatentSizeToPixelSize"
+        }
+      },
+      "238": {
+        "inputs": {
+          "text": "A movie poster of a cute women dressed in cosplay attire. She have long blonde hair with long bangs and wearing red contact lens to highlight her eyes and face. She is wearing a white shirt and black jeans and black tie with a blue jacket draping on body. She has a pair of straight red horn on her head. She is sitting on the ground with a serious face. The foreground has a bold title text with blue design said \"FLUX\", covering the bottom third of the poster.\n\nThe background is a messy room fully with all kind of daily items, there is a window on the right side where natural light shining in filling up the room with warm natural lights. There are red substances forming text from the women's hand, forming the text \"LoRa\",\"ControlNet\" and \"Negative Prompting\".\n\nThe poster is highly detailed with natural textures and intricate patterns, showcasing realistic lighting and deep shadows to give the scene a sense of depth. The focus should be clearly defined, making every object appear sharply focused with pin-sharp details."
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "Positive Prompt"
+        }
+      },
+      "239": {
+        "inputs": {
+          "text": "Horror,2d ,anime ,drawing"
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "Negative Prompt"
+        }
+      },
+      "240": {
+        "inputs": {
+          "value": 2,
+          "conditioning": [
+            "238",
+            0
+          ]
+        },
+        "class_type": "FluxGuidance",
+        "_meta": {
+          "title": "FluxGuidance"
+        }
+      },
+      "241": {
+        "inputs": {
+          "value": 2,
+          "conditioning": [
+            "239",
+            0
+          ]
+        },
+        "class_type": "FluxGuidance",
+        "_meta": {
+          "title": "FluxGuidance"
+        }
+      },
+      "244": {
+        "inputs": {
+          "value": 1073682373069790
+        },
+        "class_type": "Seed (rgthree)",
+        "_meta": {
+          "title": "Main Seed"
+        }
+      },
+      "251": {
+        "inputs": {
+          "value": 2,
+          "input1": [
+            "159",
+            0
+          ],
+          "input2": [
+            "363",
+            0
+          ]
+        },
+        "class_type": "ImpactSwitch",
+        "_meta": {
+          "title": "Output Switch"
+        }
+      },
+      "254": {
+        "inputs": {
+          "value": 1,
+          "conditioning": [
+            "136",
+            0
+          ]
+        },
+        "class_type": "ControlNetApply",
+        "_meta": {
+          "title": "ControlNetApply"
+        }
+      },
+      "255": {
+        "inputs": {
+          "control_net_name": "Flux\\controlnet.safetensors"
+        },
+        "class_type": "ControlNetLoader",
+        "_meta": {
+          "title": "ControlNetLoader"
+        }
+      },
+      "256": {
+        "inputs": {
+          "CONTROL_NET": [
+            "255",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere",
+        "_meta": {
+          "title": "Anything Everywhere"
+        }
+      },
+      "259": {
+        "inputs": {
+          "image": "example.png"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "ControlNet Image"
+        }
+      },
+      "260": {
+        "inputs": {
+          "text": "",
+          "IMAGE": [
+            "311",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "To ControlNets"
+        }
+      },
+      "261": {
+        "inputs": {
+          "images": [
+            "311",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "ControlNet Processed Preview"
+        }
+      },
+      "264": {
+        "inputs": {
+          "value": 512,
+          "width": [
+            "230",
+            0
+          ],
+          "height": [
+            "230",
+            1
+          ]
+        },
+        "class_type": "EmptyImage",
+        "_meta": {
+          "title": "Canvas Preview"
+        }
+      },
+      "265": {
+        "inputs": {
+          "images": [
+            "264",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "2. Blank Canvas Preview"
+        }
+      },
+      "266": {
+        "inputs": {
+          "image": [
+            "264",
+            0
+          ]
+        },
+        "class_type": "Get resolution [Crystools]",
+        "_meta": {
+          "title": "Get resolution [Crystools]"
+        }
+      },
+      "269": {
+        "inputs": {
+          "value": 1,
+          "positive": [
+            "240",
+            0
+          ],
+          "negative": [
+            "241",
+            0
+          ]
+        },
+        "class_type": "ControlNetApplyAdvanced",
+        "_meta": {
+          "title": "ControlNetApplyAdvanced"
+        }
+      },
+      "273": {
+        "inputs": {
+          "value": 512,
+          "image": [
+            "307",
+            0
+          ]
+        },
+        "class_type": "ImageResize+",
+        "_meta": {
+          "title": "Resize to Pixel Perfect"
+        }
+      },
+      "274": {
+        "inputs": {
+          "text": "",
+          "INT": [
+            "230",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "Pixel Perfect Width"
+        }
+      },
+      "276": {
+        "inputs": {
+          "image": "example.png"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "ControlNet Image"
+        }
+      },
+      "277": {
+        "inputs": {
+          "text": "describe the picture in detail",
+          "images": [
+            "276",
+            0
+          ]
+        },
+        "class_type": "OllamaVision",
+        "_meta": {
+          "title": "OllamaVision"
+        }
+      },
+      "278": {
+        "inputs": {
+          "text": [
+            "277",
+            0
+          ]
+        },
+        "class_type": "ShowText|pysssss",
+        "_meta": {
+          "title": "ShowText|pysssss"
+        }
+      },
+      "280": {
+        "inputs": {
+          "text": "",
+          "image": [
+            "276",
+            0
+          ],
+          "florence2_model": [
+            "395",
+            0
+          ]
+        },
+        "class_type": "Florence2Run",
+        "_meta": {
+          "title": "Florence2Run"
+        }
+      },
+      "281": {
+        "inputs": {
+          "text": [
+            "280",
+            2
+          ]
+        },
+        "class_type": "ShowText|pysssss",
+        "_meta": {
+          "title": "ShowText|pysssss"
+        }
+      },
+      "288": {
+        "inputs": {
+          "text": "always",
+          "any": [
+            "184",
+            0
+          ]
+        },
+        "class_type": "PlaySound|pysssss",
+        "_meta": {
+          "title": "PlaySound|pysssss"
+        }
+      },
+      "307": {
+        "inputs": {
+          "value": 110,
+          "image": [
+            "259",
+            0
+          ]
+        },
+        "class_type": "CannyEdgePreprocessor",
+        "_meta": {
+          "title": "CannyEdgePreprocessor"
+        }
+      },
+      "308": {
+        "inputs": {
+          "value": [
+            {
+              "name": "A",
+              "selected": true,
+              "url": "/view?filename=rgthree.compare._temp_amhsk_00007_.png&type=temp&subfolder=&rand=0.5455165662454506"
+            },
+            {
+              "name": "B",
+              "selected": true,
+              "url": "/view?filename=rgthree.compare._temp_amhsk_00008_.png&type=temp&subfolder=&rand=0.5192325211681517"
+            }
+          ],
+          "image_b": [
+            "288",
+            0
+          ]
+        },
+        "class_type": "Image Comparer (rgthree)",
+        "_meta": {
+          "title": "Image Compare with Canny"
+        }
+      },
+      "309": {
+        "inputs": {
+          "text": "Image Compare with Canny",
+          "IMAGE": [
+            "311",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "To image compare"
+        }
+      },
+      "311": {
+        "inputs": {
+          "value": 256,
+          "image": [
+            "273",
+            0
+          ]
+        },
+        "class_type": "ImageCrop+",
+        "_meta": {
+          "title": "Crop to Pixel Perfect"
+        }
+      },
+      "314": {
+        "inputs": {
+          "filename": "1024x1024 (1.0)"
+        },
+        "class_type": "SDXLEmptyLatentSizePicker+",
+        "_meta": {
+          "title": "SDXLEmptyLatentSizePicker+"
+        }
+      },
+      "316": {
+        "inputs": {
+          "value": 1,
+          "input1": [
+            "157",
+            0
+          ],
+          "input2": [
+            "314",
+            0
+          ]
+        },
+        "class_type": "ImpactSwitch",
+        "_meta": {
+          "title": "MegePixel or Resolution"
+        }
+      },
+      "319": {
+        "inputs": {
+          "text": "",
+          "INT": [
+            "230",
+            1
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "Pixel Perfect Height"
+        }
+      },
+      "321": {
+        "inputs": {
+          "text": "VAE Decode 1",
+          "LATENT": [
+            "251",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "To VAE Decode"
+        }
+      },
+      "337": {
+        "inputs": {
+          "value": 1
+        },
+        "class_type": "DynamicThresholdingFull",
+        "_meta": {
+          "title": "1 | DynamicThresholdingFull"
+        }
+      },
+      "338": {
+        "inputs": {
+          "value": 1,
+          "input1": [
+            "337",
+            0
+          ],
+          "input2": [
+            "340",
+            0
+          ]
+        },
+        "class_type": "ImpactSwitch",
+        "_meta": {
+          "title": "Model Control"
+        }
+      },
+      "340": {
+        "inputs": {
+          "value": 2.5100000000000002
+        },
+        "class_type": "ModelSamplingFlux",
+        "_meta": {
+          "title": "2 | ModelSamplingFlux"
+        }
+      },
+      "342": {
+        "inputs": {
+          "positive": [
+            "346",
+            0
+          ],
+          "negative": [
+            "347",
+            0
+          ],
+          "pixels": [
+            "349",
+            0
+          ],
+          "mask": [
+            "349",
+            1
+          ]
+        },
+        "class_type": "InpaintModelConditioning",
+        "_meta": {
+          "title": "InpaintModelConditioning"
+        }
+      },
+      "343": {
+        "inputs": {
+          "text": "enable",
+          "positive": [
+            "342",
+            0
+          ],
+          "negative": [
+            "342",
+            1
+          ],
+          "latent_image": [
+            "342",
+            2
+          ],
+          "noise_seed": [
+            "352",
+            0
+          ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+          "title": "inpaint Ksampler"
+        }
+      },
+      "344": {
+        "inputs": {
+          "samples": [
+            "343",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "345": {
+        "inputs": {
+          "images": [
+            "344",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "346": {
+        "inputs": {
+          "text": "red substance raising to mid air forming three texts : \"LoRa\", \"ControlNet\", \"Negative Prompting\".\n\nHighly detailed with natural textures and intricate patterns, showcasing realistic lighting and deep shadows to give the scene a sense of depth. The focus should be clearly defined, making every object appear sharply focused with pin-sharp details."
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "Positive Prompt"
+        }
+      },
+      "347": {
+        "inputs": {
+          "text": "Horror,2d ,anime ,drawing"
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "Negative Prompt"
+        }
+      },
+      "349": {
+        "inputs": {
+          "image": "clipspace/clipspace-mask-9414958.699999988.png [input]"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "352": {
+        "inputs": {
+          "value": 253949721693996
+        },
+        "class_type": "Seed (rgthree)",
+        "_meta": {
+          "title": "Seed (rgthree)"
+        }
+      },
+      "353": {
+        "inputs": {
+          "text": "",
+          "MODEL": [
+            "338",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "To inpaint Ksampler"
+        }
+      },
+      "355": {
+        "inputs": {
+          "text": "",
+          "IMAGE": [
+            "184",
+            0
+          ]
+        },
+        "class_type": "Anything Everywhere?",
+        "_meta": {
+          "title": "Anything Everywhere?"
+        }
+      },
+      "363": {
+        "inputs": {
+          "value": true,
+          "model": [
+            "338",
+            0
+          ],
+          "positive": [
+            "269",
+            0
+          ],
+          "negative": [
+            "269",
+            1
+          ],
+          "noise_seed": [
+            "244",
+            0
+          ],
+          "variation_seed": [
+            "388",
+            0
+          ]
+        },
+        "class_type": "KSamplerAdvanced //Inspire",
+        "_meta": {
+          "title": "KSamplerAdvanced //Inspire"
+        }
+      },
+      "365": {
+        "inputs": {
+          "value": [
+            {
+              "name": "A",
+              "selected": true,
+              "url": "/view?filename=rgthree.compare._temp_aplaf_00001_.png&type=temp&subfolder=&rand=0.32033814212249223"
+            },
+            {
+              "name": "B",
+              "selected": true,
+              "url": "/view?filename=rgthree.compare._temp_aplaf_00002_.png&type=temp&subfolder=&rand=0.3458031317370618"
+            }
+          ],
+          "image_a": [
+            "367",
+            0
+          ]
+        },
+        "class_type": "Image Comparer (rgthree)",
+        "_meta": {
+          "title": "Image Compare with Canny"
+        }
+      },
+      "367": {
+        "inputs": {
+          "value": 2,
+          "pixels": [
+            "379",
+            0
+          ],
+          "upscaler": [
+            "386",
+            0
+          ]
+        },
+        "class_type": "IterativeImageUpscale",
+        "_meta": {
+          "title": "IterativeImageUpscale"
+        }
+      },
+      "371": {
+        "inputs": {
+          "hook1": [
+            "372",
+            0
+          ],
+          "hook2": [
+            "374",
+            0
+          ]
+        },
+        "class_type": "PixelKSampleHookCombine",
+        "_meta": {
+          "title": "PixelKSampleHookCombine"
+        }
+      },
+      "372": {
+        "inputs": {
+          "text": "simple"
+        },
+        "class_type": "DenoiseScheduleHookProvider",
+        "_meta": {
+          "title": "DenoiseScheduleHookProvider"
+        }
+      },
+      "374": {
+        "inputs": {
+          "text": "simple"
+        },
+        "class_type": "StepsScheduleHookProvider",
+        "_meta": {
+          "title": "StepsScheduleHookProvider"
+        }
+      },
+      "375": {
+        "inputs": {
+          "text": "an image that is highly detailed with natural textures and intricate patterns, showcasing realistic lighting and deep shadows to give the scene a sense of depth. The focus should be clearly defined, making every object appear sharply focused with pin-sharp details."
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "Positive Prompt"
+        }
+      },
+      "376": {
+        "inputs": {
+          "text": "Horror,2d ,anime ,drawing"
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "Negative Prompt"
+        }
+      },
+      "377": {
+        "inputs": {
+          "value": 4,
+          "conditioning": [
+            "375",
+            0
+          ]
+        },
+        "class_type": "FluxGuidance",
+        "_meta": {
+          "title": "FluxGuidance"
+        }
+      },
+      "378": {
+        "inputs": {
+          "value": 4,
+          "conditioning": [
+            "376",
+            0
+          ]
+        },
+        "class_type": "FluxGuidance",
+        "_meta": {
+          "title": "FluxGuidance"
+        }
+      },
+      "379": {
+        "inputs": {
+          "image": "pasted/image (78).png"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "380": {
+        "inputs": {
+          "images": [
+            "367",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "381": {
+        "inputs": {
+          "model_name": "4xFFHQDAT.pth"
+        },
+        "class_type": "UpscaleModelLoader",
+        "_meta": {
+          "title": "UpscaleModelLoader"
+        }
+      },
+      "382": {
+        "inputs": {
+          "text": "MultiDiffusion"
+        },
+        "class_type": "TiledDiffusion",
+        "_meta": {
+          "title": "TiledDiffusion"
+        }
+      },
+      "383": {
+        "inputs": {
+          "hook1": [
+            "371",
+            0
+          ],
+          "hook2": [
+            "384",
+            0
+          ]
+        },
+        "class_type": "PixelKSampleHookCombine",
+        "_meta": {
+          "title": "PixelKSampleHookCombine"
+        }
+      },
+      "384": {
+        "inputs": {
+          "text": "simple"
+        },
+        "class_type": "CfgScheduleHookProvider",
+        "_meta": {
+          "title": "CfgScheduleHookProvider"
+        }
+      },
+      "385": {
+        "inputs": {
+          "value": 396195782558702
+        },
+        "class_type": "Seed (rgthree)",
+        "_meta": {
+          "title": "Seed (rgthree)"
+        }
+      },
+      "386": {
+        "inputs": {
+          "text": "lanczos",
+          "model": [
+            "382",
+            0
+          ],
+          "positive": [
+            "377",
+            0
+          ],
+          "negative": [
+            "378",
+            0
+          ],
+          "upscale_model_opt": [
+            "381",
+            0
+          ],
+          "pk_hook_opt": [
+            "383",
+            0
+          ],
+          "seed": [
+            "385",
+            0
+          ]
+        },
+        "class_type": "PixelKSampleUpscalerProvider",
+        "_meta": {
+          "title": "PixelKSampleUpscalerProvider"
+        }
+      },
+      "387": {
+        "inputs": {
+          "image": [
+            "367",
+            0
+          ]
+        },
+        "class_type": "Get resolution [Crystools]",
+        "_meta": {
+          "title": "Get resolution [Crystools]"
+        }
+      },
+      "388": {
+        "inputs": {
+          "value": -1
+        },
+        "class_type": "Seed (rgthree)",
+        "_meta": {
+          "title": "Variation Seed"
+        }
+      },
+      "395": {
+        "inputs": {
+          "filename": "microsoft/Florence-2-base"
+        },
+        "class_type": "DownloadAndLoadFlorence2Model",
+        "_meta": {
+          "title": "DownloadAndLoadFlorence2Model"
+        }
+      }
+    }
+  }
+}
